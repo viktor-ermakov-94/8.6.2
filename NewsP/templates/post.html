@@ -1,0 +1,35 @@
+<!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load my_filters %} <!-- не забываем заранее загружать наши фильтры! -->
+<!-- Название у нас будет proudcts -->
+{% block title %}
+{{ post.id }} || {{ post.title }}
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, ID которого было передано в адрес -->
+{% block content %}
+<!--<h1>{{ post }}</h1>-->
+<!--3.	По ссылке /news/<id новости> должна выводиться детальная информация о новости.
+4.	Заголовок, дата публикации всё в том же формате, и полный текст статьи
+-->
+{% if post %} <!-- Выводим только, если они есть с помощью тега if -->
+    <h1>{{ post.title | censor }}</h1>
+<i>ID = {{ post.id }}</i>
+<h3>Дата публикации: {{ post.dateCreation|date:'d F Y' }}. Время публикации: {{ time_now|time:"H:i" }}</h3>
+
+<h3>Категория: {{ post.categoryType }} - {{ post.get_categoryType_display }}</h3>
+<h3>Тематика:
+{% for c in post.postCategory.all %}
+{{c.name}},
+{% endfor %}
+</h3>
+<!--{{ post.postCategory.all }}Post.objects.get(id = 3).postCategory.all ()-->
+<!--<h3>Тематика: {{ postCategoryset }}</h3>-->
+<h3>Автор: {{ post.author.authorUser.username }}</h3>
+<p>{{post.text | censor}}</p>
+
+       <!-- {{ posts }} -->
+    {% else %} <!-- Если нет, то говорим, что товаров нет ;) -->
+        <h2>Такая публикация не существует!</h2>
+    {% endif %}
+{% endblock content %}
