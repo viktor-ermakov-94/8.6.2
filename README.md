@@ -12,6 +12,7 @@ https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/news.html
 
 3.Новости должны выводиться в порядке от более свежей до самой старой.
 https://github.com/alyonarud/newsp1/blob/main/NewsP/news/views.py
+
  Отображается всё по адресу /news/.
 https://github.com/alyonarud/newsp1/blob/main/NewsP/news/urls.py
 
