@@ -10,15 +10,18 @@ def multiply(value, arg):  # первый аргумент здесь это т�
 @register.filter(name='censor')
 def censor(value):
     value1 = (str(value)).split()
-    censor_list = ['дебил',
+    censor_list1 = ['дебил',
                    'дурак',
                    'придурок',
                    'Алма-Аты', # для теста
                    'связи' # для теста
                    ]
-#    censor_list = []
-#    with open('news/censor_list.txt') as f:
- #       censor_list = f.read().splitlines()
+    censor_list = []
+    with open('censor_list.txt', 'r') as f:
+        #censor_list = f.read().splitlines()
+        censor_list = f.read().split(", ")
+   # отладка
+    #print(censor_list)
 
     for i, word in enumerate(censor_list):
         for j, word1 in enumerate(value1):
@@ -33,4 +36,4 @@ def censor(value):
     value = ' '.join(value1)
     return str(value)
 
-
+#print(censor('6ля'))
