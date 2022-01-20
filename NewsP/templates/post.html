@@ -27,7 +27,8 @@
 <!--<h3>Тематика: {{ postCategoryset }}</h3>-->
 <h3>Автор: {{ post.author.authorUser.username }}</h3>
 <p>{{post.text | censor}}</p>
-
+<hr>
+<h3>Комментарии: {{ comments }}</h3>
        <!-- {{ posts }} -->
     {% else %} <!-- Если нет, то говорим, что товаров нет ;) -->
         <h2>Такая публикация не существует!</h2>

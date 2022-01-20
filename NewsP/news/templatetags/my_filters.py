@@ -23,20 +23,14 @@ def censor(value):
     for i, word in enumerate(censor_list):
         for j, word1 in enumerate(value1):
             if word1 == word:
-                value1[j] = "*****"
+                value1[j] = "*****" # заменяет найденное слово на звездочки
 
  #   for i in censor_list:
  #       for j in value1:
   #          if j == i:
-  #              value1.remove(i)
-                # value1.replace(i, '***')
+  #              value1.remove(i) # удаляет слово
+
     value = ' '.join(value1)
     return str(value)
 
 
- #   for i in censor_list:
-   #     if a == censor_list and a == b:
-   #         b = '*****'
-    #        return b
-  #      else:
-   #         return f'Нелья писать следующие слова:{censor_list}'
