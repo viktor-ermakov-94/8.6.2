@@ -25,10 +25,9 @@ class PostList1(ListView):
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
     queryset = Post.objects.order_by('-dateCreation') #Новости должны выводиться в порядке от более свежей до самой старой
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['time_now'] = datetime.now()  # добавим переменную текущей даты time_now
+        context['time_now'] = datetime.now()  # добавим переменную текущей даты time_now , но значение текущего локального времени, а не utf
 
         return context
 
