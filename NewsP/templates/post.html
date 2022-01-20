@@ -13,7 +13,7 @@
 4.	Заголовок, дата публикации всё в том же формате, и полный текст статьи
 -->
 {% if post %} <!-- Выводим только, если они есть с помощью тега if -->
-    <h1>{{ post.title | censor }}</h1>
+<h1>{{ post.title | censor }}</h1>
 <i>ID = {{ post.id }}</i>
 <h3>Дата публикации: {{ post.dateCreation|date:'d F Y' }}. Время публикации: {{ time_now|time:"H:i" }}</h3>
 
@@ -28,9 +28,32 @@
 <h3>Автор: {{ post.author.authorUser.username }}</h3>
 <p>{{post.text | censor}}</p>
 <hr>
-<h3>Комментарии: {{ comments }}</h3>
+<h3>Комментарии: </h3><!--{{ comment_list }}-->
+<p><strong>Сейчас {{ time_now|date:'d F Y / H:i' }},
+    <!-- {{ time_now|time:"H:i" }}-->
+    Всего комментариев: {{ comment_list|length }}</strong></p> <!-- Здесь мы применяем фильтр date. Он очень похож на метод strftime у даты.
+    С его помощью мы можем выводить дату в нужном нам формате -->
+    <hr>
+    {% if comment_list %} <!-- Выводим товары только, если они есть с помощью тега if -->
+
+        {% for comment in comment_list %}
+              <div>
+                  <h4>Автор: {{ comment.commentUser.username }}</h4>
+                  <p>Опубликовано: {{ comment.dateCreation|date:'d M Y / H:i' }}</p>
+                  <p>{{ comment.text | censor | truncatechars:51 }}</p>
+                  <p>Рейтинг: {{ comment.rating }}</p>
+                  <hr>
+
+              </div>
+
+        {% endfor %}
+
        <!-- {{ posts }} -->
-    {% else %} <!-- Если нет, то говорим, что товаров нет ;) -->
-        <h2>Такая публикация не существует!</h2>
+    {% else %} <!-- Если комментов нет, то говорим, что товаров нет ;) -->
+        <h2>Комментариев нет!</h2>
     {% endif %}
+
+{% else %} <!-- Если нет, то говорим, что  нет ;) -->
+        <h2>Такая публикация не существует!</h2>
+{% endif %}
 {% endblock content %}

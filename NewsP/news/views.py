@@ -42,6 +42,7 @@ class PostDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()  # добавим переменную текущей даты time_now
+        context['comment_list'] = Comment.objects.filter(commentPost=self.kwargs['pk'])
 
         return context
 
