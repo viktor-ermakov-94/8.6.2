@@ -65,7 +65,7 @@ class Category(models.Model):
 # 	рейтинг статьи/новости.
 class Post(models.Model):
 
-    author = models.ForeignKey(Author, on_delete= models.CASCADE)
+    author = models.ForeignKey(Author, on_delete= models.CASCADE, verbose_name = "Автор")
 
     NEWS = 'NW'
     ARTICLE = 'AR'
@@ -73,11 +73,11 @@ class Post(models.Model):
         (NEWS, 'Новость'),
         (ARTICLE, 'Статья')
     )
-    categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
-    dateCreation = models.DateTimeField(auto_now_add=True) # автоматически добавлять время создания поста
-    postCategory = models.ManyToManyField(Category, through='PostCategory')
-    title =  models.CharField(max_length=128)
-    text = models.TextField()
+    categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE , verbose_name = "Категория")
+    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name = "Время создания новости") # автоматически добавлять время создания поста
+    postCategory = models.ManyToManyField(Category, through='PostCategory', verbose_name = "Тематика")
+    title =  models.CharField(max_length=128, verbose_name = "Заголовок")
+    text = models.TextField(verbose_name = "Текст")
     rating = models.SmallIntegerField(default=0)
 
     def like(self):

@@ -65,6 +65,7 @@ news
         {% endfor %}
         </table>
 <p><a href="{% url 'post_create' %}">Добавить новую публикацию</a> <br>
+    <a href="{% url 'search' %}">Поиск по публикациям</a> <br>
       <!-- Проверяем что поддерживается постраничный вывод -->
         {% if is_paginated %}
 
