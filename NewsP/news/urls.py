@@ -10,7 +10,7 @@ urlpatterns = [
     path('search/', PostSearch.as_view(), name = 'search' ), # 1.	Добавьте страничку /news/search. на ней должна быть реализована возможность пользователя искать новости по определённым критериям.
 
     path('add/', PostCreateView.as_view(), name='post_create'),  # Ссылка на создание товара
-    path('<int:pk>/add', PostUpdateView.as_view(), name='post_update'),
+    path('<int:pk>/edit', PostUpdateView.as_view(), name='post_update'),
     path('<int:pk>/delete', PostDeleteView.as_view(), name='post_delete'),
 
 ]
