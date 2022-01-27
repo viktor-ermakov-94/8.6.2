@@ -10,4 +10,4 @@ class PostForm(ModelForm):
 
         fields = ['title', 'text', 'categoryType', 'postCategory', 'author']
 
-        # 'dateCreation',
+        # 'dateCreation', не редактируется, автоматически создается
