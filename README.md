@@ -1,6 +1,28 @@
 # newsp1
  учебный проект по созданию новостного портала на джанго
+ 
+ Итоговый проект по разделу D4
 
+1. Усовершенствовать ваш новостной портал. Добавить постраничный вывод 
+https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/news.html
+и отдельную страницу с поиском /search/, 
+https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/search.html
+чтобы пользователь мог сортировать новости по дате и имени автора.
+
+
+2. Необходимо иметь возможность создавать новые новости и статьи не только из админки, но и в самом приложении. Для такой возможности необходимо создать модельные формы.
+https://github.com/alyonarud/newsp1/blob/main/NewsP/news/forms.py
+
+3. Необходимо добавить на сайт с помощью дженериков новые страницы /news/add/, а также /news/<int:pk>/edit/. На этих страницах пользователь может добавить или редактировать новости.
+https://github.com/alyonarud/newsp1/blob/main/NewsP/news/views.py
+https://github.com/alyonarud/newsp1/blob/main/NewsP/news/urls.py
+https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/post_create.html
+
+
+4. Добавьте страницу удаления новостей /news/<int:pk>/delete/. На ней после подтверждения пользователь может удалить страницу с новостью.
+ https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/post_delete.html
+ 
+===================================================
 Итоговый проект по разделу D3
 
 В результате работы с модулем вы должны были выполнить следующие задания:
