@@ -96,8 +96,8 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.title.title()}: {self.text}'
 
-
-
+    def get_absolute_url(self):  # добавим абсолютный путь, чтобы после создания нас перебрасывало на страницу с товаром
+        return f'/news/{self.id}'
 
 
 # 4.	Модель PostCategory

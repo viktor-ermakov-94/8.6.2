@@ -27,6 +27,8 @@
 <!--<h3>Тематика: {{ postCategoryset }}</h3>-->
 <h3>Автор: {{ post.author.authorUser.username }}</h3>
 <p>{{post.text | censor}}</p>
+<br><a href="{% url 'post_update' post.id %}"><i>Редактировать</i></a> <!-- добавим ссылку на редактирование -->
+                    <a href="{% url 'post_delete' post.id %}"><i> Удалить </i></a> <!-- добавим ссылку на удаление -->
 <hr>
 <h3>Комментарии: </h3><!--{{ comment_list }}-->
 <p><strong>Сейчас {{ time_now|date:'d F Y / H:i' }},

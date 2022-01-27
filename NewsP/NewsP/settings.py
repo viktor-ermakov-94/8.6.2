@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
 # добавили
     'fpages',
+    #D4-2
+    'django_filters',
 ]
 
 # добавили
