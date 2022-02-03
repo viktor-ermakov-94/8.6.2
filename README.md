@@ -23,6 +23,7 @@ https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/post_create.html
  https://github.com/alyonarud/newsp1/blob/main/NewsP/templates/post_delete.html
  
 ===================================================
+
 Итоговый проект по разделу D3
 
 В результате работы с модулем вы должны были выполнить следующие задания:
