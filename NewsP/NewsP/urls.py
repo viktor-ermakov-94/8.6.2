@@ -22,6 +22,10 @@ urlpatterns = [
     path('pages/', include('django.contrib.flatpages.urls')),
     path('posts/', include('news.urls')),
     path('news/', include('news.urls')),
+    path('', include('protect.urls')), # D5
+    path('sign/', include('sign.urls')), # D5
+    path('accounts/', include('allauth.urls')), # D5 ?
+
     #  path('news/censor_list.txt', include('censor_list.txt')),
     # делаем так, чтобы все адреса из нашего приложения (simpleapp/urls.py) сами автоматически подключались когда мы их добавим.
 ]

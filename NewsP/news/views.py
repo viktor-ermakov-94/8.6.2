@@ -3,6 +3,9 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
      # импортируем класс получения деталей объекта
 from .models import Author, Category, Post, PostCategory, Comment
 from datetime import datetime
+# D5
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 from .filters import PostFilter
 from django.shortcuts import render
@@ -97,7 +100,7 @@ class PostCreateView(CreateView):
 
 
 # дженерик для редактирования объекта
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'post_create.html'
     form_class = PostForm
 

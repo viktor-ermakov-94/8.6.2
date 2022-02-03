@@ -14,8 +14,8 @@ import os # добавили D1
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-fts#&*c*65*j_*36gt631nf#6q-oyd141$4m*2so2=gq@^vfqn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1'] # D5
 
 
 # Application definition
@@ -47,6 +47,15 @@ INSTALLED_APPS = [
     'fpages',
     #D4-2
     'django_filters',
+    'sign', # D5
+    'protect', # D5
+    'allauth',# D5
+    'allauth.account',# D5
+    'allauth.socialaccount',# D5
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.google',# D5
+
+
 ]
 
 # добавили
@@ -78,11 +87,32 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # `allauth` needs this from django D5
+                'django.template.context_processors.request',
             ],
         'libraries': {'my_filters': 'news.templatetags.my_filters'},
         },
     },
 ]
+# D5
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth` D5
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+# D5
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+# D5
+ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
+
+
 
 WSGI_APPLICATION = 'NewsP.wsgi.application'
 
@@ -135,6 +165,12 @@ USE_TZ = True
 #STATIC_URL = 'static/'
 STATIC_URL = '/static/'
 
+
+# D5
+# LOGIN_URL = 'sign/login/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -145,3 +181,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+

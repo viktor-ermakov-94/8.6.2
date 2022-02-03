@@ -74,7 +74,7 @@ class Post(models.Model):
         (ARTICLE, 'Статья')
     )
     categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE , verbose_name = "Категория")
-    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name = "Время создания новости") # автоматически добавлять время создания поста
+    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name = "Дата создания новости") # автоматически добавлять время создания поста
     postCategory = models.ManyToManyField(Category, through='PostCategory', verbose_name = "Тематика")
     title =  models.CharField(max_length=128, verbose_name = "Заголовок")
     text = models.TextField(verbose_name = "Текст")
